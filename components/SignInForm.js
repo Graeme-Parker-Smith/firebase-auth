@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View } from "react-native";
 import { Text, Input, Button } from "react-native-elements";
 import axios from "axios";
+import firebase from "firebase";
 
 const ROOT_URL =
   "https://us-central1-one-time-password-45f00.cloudfunctions.net";
@@ -20,8 +21,12 @@ const SignInForm = () => {
   };
   const handleSubmit = async () => {
     try {
-      let response = await axios.post(`${ROOT_URL}/verifyOneTimePassword`, { phone, code });
-      console.log(response.data.token);
+      let { data } = await axios.post(`${ROOT_URL}/verifyOneTimePassword`, {
+        phone,
+        code
+      });
+      await firebase.auth().signInWithCustomToken(data.token);
+      console.log("firebase authorized!");
     } catch (err) {
       console.log(err);
     }
