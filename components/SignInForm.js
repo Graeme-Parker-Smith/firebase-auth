@@ -21,7 +21,7 @@ const SignInForm = () => {
   const handleSubmit = async () => {
     try {
       let response = await axios.post(`${ROOT_URL}/verifyOneTimePassword`, { phone, code });
-      console.log(response);
+      console.log(response.data.token);
     } catch (err) {
       console.log(err);
     }
