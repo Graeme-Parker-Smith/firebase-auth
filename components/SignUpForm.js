@@ -19,16 +19,18 @@ const SignUpForm = () => {
   };
 
   return (
-    <>
-      <Input
-        label="Enter Phone Number"
-        containerStyle={{ marginBottom: 10 }}
-        placeholder="e.g. 5555555555"
-        value={phone}
-        onChangeText={setPhone}
-      />
-      <Button onPress={handleSubmit} title="Submit" />
-    </>
+    <View>
+      <>
+        <Input
+          label="Enter Phone Number"
+          containerStyle={{ marginBottom: 10 }}
+          placeholder="e.g. 5555555555"
+          value={phone}
+          onChangeText={setPhone}
+        />
+        <Button onPress={handleSubmit} title="Submit" />
+      </>
+    </View>
   );
 };
 
